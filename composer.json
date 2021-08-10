@@ -6,5 +6,7 @@
             "email": "60581249+alamindevs@users.noreply.github.com"
         }
     ],
-    "require": {}
+    "require": {
+        "phroute/phroute": "^2.1"
+    }
 }
