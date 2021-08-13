@@ -1,10 +1,14 @@
 <?php
 namespace App\Controllers\Frontend;
 
-class HomeController {
+use App\Controllers\Controller;
+
+class HomeController extends Controller {
 
     public function getIndex() {
-        echo "controller create successful";
+
+        return $this->view( 'home' );
+
     }
 
 }

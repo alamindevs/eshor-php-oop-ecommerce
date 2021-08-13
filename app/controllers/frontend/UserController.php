@@ -4,7 +4,7 @@ namespace App\Controllers\Frontend;
 class UserController {
 
     public function getIndex() {
-        echo "User Index";
+        require_once __DIR__ . '/../../../view/home.php';
     }
 
 }
