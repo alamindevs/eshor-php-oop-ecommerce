@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Database\Capsule\Manager as DB;
 
-$capsule = new DB;
+$db = new DB();
 
 $db->addConnection( [
     'driver'    => 'mysql',

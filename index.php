@@ -8,9 +8,8 @@ use Phroute\Phroute\RouteCollector;
 
 require_once "vendor/autoload.php";
 
-$router = new RouteCollector();
-
 require_once "./database/dbconnection.php";
+$router = new RouteCollector();
 
 require_once "routes.php";
 
