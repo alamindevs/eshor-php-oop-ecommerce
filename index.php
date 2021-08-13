@@ -10,6 +10,8 @@ require_once "vendor/autoload.php";
 
 $router = new RouteCollector();
 
+require_once "./database/dbconnection.php";
+
 require_once "routes.php";
 
 # NB. You can cache the return value from $router->getData() so you don't have to create the routes each request - massive speed gains
