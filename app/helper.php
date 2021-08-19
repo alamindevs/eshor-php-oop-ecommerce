@@ -20,3 +20,13 @@ if ( !function_exists( 'redirect' ) ) {
     }
 
 }
+
+if ( !function_exists( 'bcrypt' ) ) {
+
+    function bcrypt( $value = null ) {
+
+        return password_hash( $value, PASSWORD_BCRYPT );
+
+    }
+
+}
