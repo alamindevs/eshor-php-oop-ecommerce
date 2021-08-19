@@ -49,7 +49,7 @@
 
 </head>
 <body class="js">
-<?php include_once "message/success.php";?>
+<?php include_once "message/toast.php";?>
 	<!-- Preloader -->
 	<div class="preloader">
 		<div class="preloader-inner">

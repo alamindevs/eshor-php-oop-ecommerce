@@ -18,6 +18,6 @@
 
 </head>
 <body>
-<?php include_once "message/success.php";?>
+<?php include_once "message/toast.php";?>
     <div class="main">
 
