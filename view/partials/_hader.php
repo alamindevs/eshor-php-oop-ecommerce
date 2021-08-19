@@ -35,14 +35,21 @@
 	<!-- Slicknav -->
     <link rel="stylesheet" href="../../assets/fondend/css/slicknav.min.css">
 
+
 	<!-- Eshop StyleSheet -->
+
 	<link rel="stylesheet" href="../../assets/fondend/css/reset.css">
 	<link rel="stylesheet" href="../../assets/fondend/style.css">
     <link rel="stylesheet" href="../../assets/fondend/css/responsive.css">
 
+	<script src="../../assets/fondend/js/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="../../assets/fondend/js/toast/jquery.toast.css">
+    <script src="../../assets/fondend/js/toast/jquery.toast.js"></script>
+
 </head>
 <body class="js">
-
+<?php include_once "message/success.php";?>
 	<!-- Preloader -->
 	<div class="preloader">
 		<div class="preloader-inner">

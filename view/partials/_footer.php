@@ -184,7 +184,7 @@
 	<!-- /End Footer Area -->
 
 	<!-- Jquery -->
-    <script src="../../assets/fondend/js/jquery.min.js"></script>
+
     <script src="../../assets/fondend/js/jquery-migrate-3.0.0.js"></script>
 	<script src="../../assets/fondend/js/jquery-ui.min.js"></script>
 	<!-- Popper JS -->

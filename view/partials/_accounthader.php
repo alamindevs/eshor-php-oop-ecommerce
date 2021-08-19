@@ -11,7 +11,13 @@
 
     <!-- Main css -->
     <link rel="stylesheet" href="assets/accountfrom/css/style.css">
+    <script src="assets/accountfrom/vendor/jquery/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="../../assets/fondend/js/toast/jquery.toast.css">
+    <script src="../../assets/fondend/js/toast/jquery.toast.js"></script>
+
 </head>
 <body>
-
+<?php include_once "message/success.php";?>
     <div class="main">
+
