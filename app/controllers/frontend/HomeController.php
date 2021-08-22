@@ -45,13 +45,14 @@ class HomeController extends Controller {
             $_SESSION['errors'] = $massage;
             return redirect( 'register' );
         } else {
-
+            $token = sha1( $post['username'] . $_POST['phone'] . uniqid( 'oop', true ) );
             User::create( [
-                'name'     => $_POST['name'],
-                'username' => $_POST['username'],
-                'email'    => $_POST['email'],
-                'phone'    => $_POST['phone'],
-                'password' => bcrypt( $_POST['password'] ),
+                'name'         => $_POST['name'],
+                'username'     => $_POST['username'],
+                'email'        => $_POST['email'],
+                'phone'        => $_POST['phone'],
+                'password'     => bcrypt( $_POST['password'] ),
+                'verify_token' => $token,
             ] );
             $_SESSION['message_success'] = 'Registration successful';
             return redirect( 'login' );
