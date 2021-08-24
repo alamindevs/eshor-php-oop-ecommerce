@@ -2,7 +2,9 @@
 namespace App\Controllers\Frontend;
 
 use App\Controllers\Controller;
+use App\Mail\Mail;
 use App\Models\User;
+use Exception;
 use function App\Helper\bcrypt;
 use function App\Helper\redirect;
 use Rakit\Validation\Validator;
@@ -45,7 +47,7 @@ class HomeController extends Controller {
             $_SESSION['errors'] = $massage;
             return redirect( 'register' );
         } else {
-            $token = sha1( $post['username'] . $_POST['phone'] . uniqid( 'oop', true ) );
+            $token = sha1( $_POST['username'] . $_POST['phone'] . uniqid( 'oop', true ) );
             User::create( [
                 'name'         => $_POST['name'],
                 'username'     => $_POST['username'],
@@ -54,6 +56,14 @@ class HomeController extends Controller {
                 'password'     => bcrypt( $_POST['password'] ),
                 'verify_token' => $token,
             ] );
+            try {
+                $mail = new Mail();
+                $mail->mailSend( $_POST['email'], $_POST['name'], 'test mail', 'success' );
+
+            } catch ( Exception $e ) {
+                return "Message could not be sent. Mailer Error: {$e->getMessage()}";
+                exit();
+            }
             $_SESSION['message_success'] = 'Registration successful';
             return redirect( 'login' );
         }
