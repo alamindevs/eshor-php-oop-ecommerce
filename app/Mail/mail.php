@@ -3,6 +3,7 @@ namespace App\Mail;
 
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
 
 class Mail {
     private $host     = 'smtp.mailtrap.io';
@@ -26,6 +27,7 @@ class Mail {
         $this->mail->Password   = $this->password; //SMTP password
         $this->mail->SMTPSecure = "tls"; //Enable implicit TLS encryption
         $this->mail->Port       = $this->port; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
     }
 
     public function mailSend( $to, $name, $subject = null, $body = null ) {
