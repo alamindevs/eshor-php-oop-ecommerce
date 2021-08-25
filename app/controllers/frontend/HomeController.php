@@ -57,14 +57,16 @@ class HomeController extends Controller {
                 'verify_token' => $token,
             ] );
             try {
+                $body = file_get_contents( './view/mail/active.phtml' );
                 $mail = new Mail();
-                $mail->mailSend( $_POST['email'], $_POST['name'], 'test mail', 'success' );
+                $mail->mailSend( $_POST['email'], $_POST['name'], 'test mail', "{$body}" );
 
             } catch ( Exception $e ) {
                 return "Message could not be sent. Mailer Error: {$e->getMessage()}";
                 exit();
             }
             $_SESSION['message_success'] = 'Registration successful';
+
             return redirect( 'login' );
         }
     }
