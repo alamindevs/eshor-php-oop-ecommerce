@@ -31,7 +31,7 @@
             text: "<?=$message?>",
             position: 'top-left',
             loaderBg:'#ff6849',
-            icon: 'success',
+            icon: 'error',
             hideAfter: 3000,
             stack: 6
         });

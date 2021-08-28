@@ -4,6 +4,7 @@ namespace App\Controllers\Frontend;
 use App\Controllers\Controller;
 use App\Mail\Mail;
 use App\Models\User;
+use Carbon\Carbon;
 use Exception;
 use function App\Helper\bcrypt;
 use function App\Helper\redirect;
@@ -21,12 +22,55 @@ class HomeController extends Controller {
         return $this->view( 'login' );
     }
 
+    public function postLogin() {
+
+        $validator  = new Validator;
+        $validation = $validator->make( $_POST + $_FILES, [
+            'email'    => 'required|email',
+            'password' => 'required|min:6',
+
+        ] );
+
+        $validation->validate();
+        if ( $validation->fails() ) {
+            $errors             = $validation->errors();
+            $massage            = $errors->firstOfAll();
+            $_SESSION['errors'] = $massage;
+            return redirect( 'login' );
+            exit();
+        }
+
+        $user = User::where( 'email', $_POST['email'] )->select( 'id', 'email', 'password', 'verify_time' )->first();
+        // return $user;
+
+        if ( $user ) {
+
+            if ( $user->verify_time == null ) {
+                $_SESSION['message_error'] = 'Your account is not verifyed';
+                return redirect( 'login' );
+            }
+
+            if ( password_verify( "123456789", $user->password ) == true ) {
+                $_SESSION['message_success'] = 'Login successful';
+                return redirect( '' );
+            }
+
+            $_SESSION['message_error'] = 'Invalide Credential';
+            return redirect( 'login' );
+
+        }
+
+        $_SESSION['message_error'] = 'Opss! try agin';
+        return redirect( 'login' );
+
+    }
+
     public function getRegister() {
         return $this->view( 'register' );
     }
 
     public function postRegister() {
-
+        // return $_SERVER['HTTPS'];
         $validator = new Validator;
         // make it
         $validation = $validator->make( $_POST + $_FILES, [
@@ -57,17 +101,40 @@ class HomeController extends Controller {
                 'verify_token' => $token,
             ] );
             try {
-                $body = file_get_contents( './view/mail/active.phtml' );
+                $body = "Hi Dear{$_POST['username']}  <a href='http://{$_SERVER['HTTP_HOST']}/activet/{$token}'>click heare</a>";
                 $mail = new Mail();
                 $mail->mailSend( $_POST['email'], $_POST['name'], 'test mail', "{$body}" );
 
+                $_SESSION['message_success'] = 'Registration successful';
+                return redirect( 'login' );
+                // return '<script type="text/javascript">window.location = "/login"</script>';
             } catch ( Exception $e ) {
                 return "Message could not be sent. Mailer Error: {$e->getMessage()}";
                 exit();
             }
-            $_SESSION['message_success'] = 'Registration successful';
 
+        }
+    }
+
+    public function getActivet( $token = '' ) {
+
+        if ( empty( $token ) ) {
+            $_SESSION['message_error'] = 'no token found';
             return redirect( 'login' );
         }
+
+        $user = User::where( 'verify_token', $token )->first();
+        if ( $user ) {
+            $user->update( [
+                'verify_token' => null,
+                'verify_time'  => Carbon::now(),
+
+            ] );
+            $_SESSION['message_success'] = 'Account active. you can login now.';
+            return redirect( 'login' );
+            exit();
+        }
+        $_SESSION['message_error'] = 'Invalid token !';
+        return redirect( 'login' );
     }
 }
