@@ -50,7 +50,7 @@ class HomeController extends Controller {
                 return redirect( 'login' );
             }
 
-            if ( password_verify( "123456789", $user->password ) == true ) {
+            if ( password_verify( $_POST['password'], $user->password ) == true ) {
                 $_SESSION['message_success'] = 'Login successful';
                 return redirect( '' );
             }
