@@ -40,7 +40,7 @@ class HomeController extends Controller {
             exit();
         }
 
-        $user = User::where( 'email', $_POST['email'] )->select( 'id', 'email', 'password', 'verify_time' )->first();
+        $user = User::where( 'email', $_POST['email'] )->select( 'id', 'email', 'password', 'verify_time', 'name', 'username' )->first();
         // return $user;
 
         if ( $user ) {
@@ -52,7 +52,13 @@ class HomeController extends Controller {
 
             if ( password_verify( $_POST['password'], $user->password ) == true ) {
                 $_SESSION['message_success'] = 'Login successful';
-                return redirect( '' );
+                $_SESSION['user']            = [
+                    'id'       => $user->id,
+                    'email'    => $user->email,
+                    'username' => $user->username,
+                    'name'     => $user->name,
+                ];
+                return redirect( 'dashboard' );
             }
 
             $_SESSION['message_error'] = 'Invalide Credential';
@@ -136,5 +142,12 @@ class HomeController extends Controller {
         }
         $_SESSION['message_error'] = 'Invalid token !';
         return redirect( 'login' );
+    }
+
+    public function getLogout() {
+        unset( $_SESSION['user'] );
+        $_SESSION['message_success'] = 'logout Successful.';
+        return redirect( 'login' );
+        exit();
     }
 }

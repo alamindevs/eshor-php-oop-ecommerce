@@ -1,3 +1,4 @@
+</main>
  <!--   Core JS Files   -->
  <script src="../../assets/backend/js/core/popper.min.js"></script>
   <script src="../../assets/backend/js/core/bootstrap.min.js"></script>
