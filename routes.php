@@ -17,8 +17,9 @@ $router->filter( 'auth', function () {
 $router->controller( '/', HomeController::class );
 $router->controller( '/product', ProductController::class );
 
-$router->group( ['before' => 'auth'], function ( $router ) {
+$router->group( ['before' => 'auth', 'prefix' => 'dashboard'], function ( $router ) {
 
-    $router->controller( '/dashboard', DashboardController::class );
+    $router->controller( '/', DashboardController::class );
     $router->controller( '/user', UserController::class );
+
 } );
