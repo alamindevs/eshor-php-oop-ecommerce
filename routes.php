@@ -15,11 +15,10 @@ $router->filter( 'auth', function () {
 } );
 
 $router->controller( '/', HomeController::class );
-$router->controller( '/user', UserController::class );
 $router->controller( '/product', ProductController::class );
 
 $router->group( ['before' => 'auth'], function ( $router ) {
 
     $router->controller( '/dashboard', DashboardController::class );
-
+    $router->controller( '/user', UserController::class );
 } );
