@@ -1,4 +1,4 @@
-<?php require_once "partials/_accounthader.php";?>
+<?php partials_view( "partials/_accounthader" );?>
         <!-- Sing in  Form -->
         <section class="sign-in">
             <div class="container">
@@ -47,4 +47,4 @@
                 </div>
             </div>
         </section>
-<?php require_once "partials/_accountfooter.php";?>
+<?php partials_view( "partials/_accountfooter" );?>

@@ -1,4 +1,4 @@
-<?php require_once "partials/_hader.php";?>
+<?php partials_view( "partials/_hader" );?>
 
 	<!-- Start Product Area -->
     <div class="product-area section">
@@ -1355,4 +1355,4 @@
 	<!-- End Product Area -->
 
 
-<?php require_once "partials/_footer.php";?>
+<?php partials_view( "partials/_footer" )?>

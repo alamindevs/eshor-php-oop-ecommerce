@@ -1,4 +1,4 @@
-<?php require_once "partials/_accounthader.php";?>
+<?php partials_view( "partials/_accounthader" );?>
   <!-- Sign up form -->
   <section class="signup">
             <div class="container">

@@ -22,7 +22,7 @@
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
-<?php include_once "_sidebar.php"?>
+<?php partials_view( "_sidebar" )?>
 <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
     <!-- Navbar -->
-    <?php include_once "_navebar.php"?>
+    <?php partials_view( "_navebar" )?>

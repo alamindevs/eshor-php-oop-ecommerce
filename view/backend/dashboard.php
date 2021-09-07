@@ -1,5 +1,5 @@
 
-  <?php include_once "partials/_header.php"?>
+  <?php partials_view( "partials/_header" )?>
 
 
     <div class="container-fluid py-4">
@@ -651,4 +651,4 @@
     </div>
 
 
-  <?php include_once "partials/_footer.php"?>
+  <?php partials_view( "partials/_footer" )?>

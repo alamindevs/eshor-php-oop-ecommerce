@@ -1,4 +1,4 @@
-<?php require_once "partials/_hader.php";?>
+<?php partials_view( "partials/_hader" );?>
 	<!-- Slider Area -->
 	<section class="hero-slider">
 		<!-- Single Slider -->
@@ -1693,4 +1693,4 @@
 		</div>
 	</section>
 	<!-- End Shop Blog  -->
-    <?php require_once "partials/_footer.php";?>
+    <?php partials_view( "partials/_footer" );?>
