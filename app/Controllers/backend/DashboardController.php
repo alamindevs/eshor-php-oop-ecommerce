@@ -7,7 +7,7 @@ class DashboardController extends Controller {
 
     public function getIndex() {
         // print_r( $_SESSION['user']['name'] );
-        return $this->view( "backend/dashboard" );
+        return view( "backend/dashboard" );
     }
 
 }

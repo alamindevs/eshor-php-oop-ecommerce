@@ -6,20 +6,18 @@ use App\Mail\Mail;
 use App\Models\User;
 use Carbon\Carbon;
 use Exception;
-use function App\Helper\bcrypt;
-use function App\Helper\redirect;
 use Rakit\Validation\Validator;
 
 class HomeController extends Controller {
 
     public function getIndex() {
 
-        return $this->view( 'home' );
+        return view( 'home' );
 
     }
 
     public function getLogin() {
-        return $this->view( 'login' );
+        return view( 'login' );
     }
 
     public function postLogin() {
@@ -72,7 +70,7 @@ class HomeController extends Controller {
     }
 
     public function getRegister() {
-        return $this->view( 'register' );
+        return view( 'register' );
     }
 
     public function postRegister() {
