@@ -22,7 +22,8 @@
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
-<?php partials_view( "_sidebar" )?>
+<?php partials_view( "backend/partials/_sidebar" )?>
 <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
     <!-- Navbar -->
-    <?php partials_view( "_navebar" )?>
+    <?php partials_view( "backend/partials/_navebar" )?>
+    <div class="container-fluid py-4">

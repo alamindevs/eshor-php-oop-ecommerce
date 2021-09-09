@@ -1,5 +1,5 @@
 
-  <?php partials_view( "partials/_header" )?>
+  <?php partials_view( "backend/partials/_header" )?>
 
 
     <div class="container-fluid py-4">
@@ -651,4 +651,4 @@
     </div>
 
 
-  <?php partials_view( "partials/_footer" )?>
+  <?php partials_view( "backend/partials/_footer" )?>
