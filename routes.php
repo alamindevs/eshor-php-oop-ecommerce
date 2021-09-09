@@ -1,9 +1,9 @@
 <?php
+use App\Controllers\Backend\CategoryController;
 use App\Controllers\Backend\DashboardController;
 use App\Controllers\Frontend\HomeController;
 use App\Controllers\Frontend\ProductController;
 use App\Controllers\Frontend\UserController;
-use function App\Helper\redirect;
 
 $router->filter( 'auth', function () {
     if ( !isset( $_SESSION['user'] ) ) {
@@ -21,5 +21,6 @@ $router->group( ['before' => 'auth', 'prefix' => 'dashboard'], function ( $route
 
     $router->controller( '/', DashboardController::class );
     $router->controller( '/user', UserController::class );
+    $router->controller( '/category', CategoryController::class );
 
 } );
